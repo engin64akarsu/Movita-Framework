@@ -5,7 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-import java.util.List;
 
 public class MovitaPage {
 
@@ -18,7 +17,7 @@ public class MovitaPage {
     public WebElement kurumsalMenu;
 
     @FindBy(xpath = "(//ul[@class=\"sub-menu-container\"])[1]")
-    public List<WebElement> subKurumsalMenu;
+    public WebElement subKurumsalMenu;
 
     @FindBy(id = "logo")
     public WebElement movitaLogo;
@@ -26,14 +25,29 @@ public class MovitaPage {
     @FindBy(xpath = "//div[text()=\"Mobil Vasıta İzleme Takip Sistemi\"]")
     public WebElement mainTextTurkish;
 
-
     @FindBy(xpath = "//*[@id=\"dropdownMenuButton\"]")
     public WebElement dropdownMenubutton;
-    @FindBy(xpath = "//a[@class=\"dropdown-item\"][2]")
+
+    @FindBy(xpath = "//a[@class=\"dropdown-item\"]")
     public WebElement logo_eng;
 
-    @FindBy(xpath = "//div[text()=\"Mobile Vehicle Traking System\"]")
+    @FindBy(xpath = "//div[@id=\"layer-713898396\"]")
     public WebElement mainTextEnglish;
+
+    @FindBy(xpath = "//*[@href=\"/rota_optimizasyonu\"][1]")
+    public WebElement rota_optimizasyon;
+
+    @FindBy(xpath = "//*[@href=\"/uygulamalar\"]")
+    public WebElement uygulamalar;
+
+    @FindBy(xpath = "//*[@href=\"/guide\"]")
+    public WebElement kilavuz;
+
+    @FindBy(xpath = "//*[@href=\"/iletisim\"]")
+    public WebElement iletisim;
+
+    @FindBy(xpath = "//*[@href=\"/login\"]")
+    public WebElement giris;
 
 
 }
