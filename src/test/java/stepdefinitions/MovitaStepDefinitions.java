@@ -6,15 +6,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.Color;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import pages.MovitaPage;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import pages.MovitaPage;
 
 import java.util.Objects;
 
@@ -22,9 +21,6 @@ import java.util.Objects;
 public class MovitaStepDefinitions {
 
     MovitaPage movita = new MovitaPage();
-    WebElement dropdownMenubutton;
-    Select select;
-
 
     @Given("User navigates to {string} page")
     public void user_navigates_to_page(String homePage) {
@@ -189,6 +185,8 @@ String s=movita.rota_optimizasyon.getText();
         String actual=movita.giris.getText();
         Assert.assertEquals(expected,actual);
 
+
     }
+
 
 }

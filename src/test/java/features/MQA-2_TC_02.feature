@@ -1,6 +1,6 @@
 Feature: Movita_01
 
-  Scenario: User clickability, color change and strings
+  Scenario: User tests clickability, color change and strings
     Given User navigates to "movita" page
 
     Then user hovers over rota_optimizasyon and verifies color change

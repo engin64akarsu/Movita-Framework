@@ -7,6 +7,7 @@ import java.util.Properties;
 
 public class ConfigurationReader {
     static Properties properties;
+    //src/test/java/utilities
 
     static {
         String path="configuration.properties";

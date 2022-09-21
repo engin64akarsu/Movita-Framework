@@ -5,7 +5,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/features",
+        features = "src/test/java/features/MQA-2_TC_03.feature",
         glue = "stepdefinitions",
         dryRun = false,
         tags="@movita2"
@@ -14,6 +14,6 @@ import org.junit.runner.RunWith;
 
 )
 
-public class Runner_01 {
+public class Runner_02 {
 
 }
