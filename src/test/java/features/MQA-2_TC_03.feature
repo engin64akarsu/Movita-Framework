@@ -15,3 +15,6 @@ Then hover over and verify demo basvurusu's color does not change
     And clicks on demo basvurusu
     Then verify demo basvurusu is displayed
     Then navigate back
+    And hover over and verify arrow's color changed
+    Then click on arrow
+    Then verify Tüm Sektörlere Hitap Eden Çözümler is displayed

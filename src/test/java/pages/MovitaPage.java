@@ -61,13 +61,16 @@ public class MovitaPage {
     @FindBy(tagName = "h1")
     public WebElement bayi_baslik;
 
-    @FindBy(xpath ="//*[@class=\"button button-3d button-large \"]")
-            public WebElement demo;
+    @FindBy(xpath = "//*[@class=\"button button-3d button-large \"]")
+    public WebElement demo;
 
 
     @FindBy(tagName = "h1")
     public WebElement demo_baslik;
 
+    @FindBy(xpath = "//div[text()=\"Tüm Sektörlere Hitap Eden Çözümler\"][1]")
+
+    public WebElement tum_sektorler;
 
 
 }
