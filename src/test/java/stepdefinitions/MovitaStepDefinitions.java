@@ -6,14 +6,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import pages.MovitaPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-import org.openqa.selenium.support.Color;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.MovitaPage;
 
 import java.util.Objects;
 
@@ -21,10 +21,13 @@ import java.util.Objects;
 public class MovitaStepDefinitions {
 
     MovitaPage movita = new MovitaPage();
+    WebElement dropdownMenubutton;
+    Select select;
+
 
     @Given("User navigates to {string} page")
-    public void user_navigates_to_page(String homePage) {
-        Driver.getDriver().get(ConfigurationReader.getProperty(homePage));
+    public void user_navigates_to_page(String homepage) {
+        Driver.getDriver().get(ConfigurationReader.getProperty(homepage));
     }
 
     @When("clicks on movita logo")
@@ -54,6 +57,7 @@ public class MovitaStepDefinitions {
 
     }
 
+
     @And("clicks on the language button")
     public void user_clicks_on_the_Language_Button() {
         movita.dropdownMenubutton.click();
@@ -66,127 +70,160 @@ public class MovitaStepDefinitions {
         movita.logo_eng.click();
 
     }
-    @And("Verify if Mobile Vehicle Traking System is displayed")
-    public void verify_if_mobile_vehivle_traking_system_displayed(){
 
-        ReusableMethods.waitForVisibility(movita.mainTextEnglish, 10);
+    @And("Verify if Mobile Vehicle Traking System is displayed")
+    public void verify_if_mobile_vehivle_traking_system_displayed() {
+
+        ReusableMethods.waitForVisibility(movita.mainTextEnglish, 5);
         Assert.assertTrue(movita.mainTextEnglish.isDisplayed());
     }
+
+    @Then("clicks on Turkish on the dropdown menu")
+    public void clicksOnTurkishOnButton() {
+        ReusableMethods.waitForVisibility(movita.logo_turk, 5);
+        movita.logo_turk.click();
+    }
+
     @Then("user hovers over rota_optimizasyon and verifies color change")
-    public void hover_over_rota_optimizasyon(){
-       String color_before= movita.rota_optimizasyon.getCssValue("color");
-       String color_b_hex=Color.fromString(color_before).asHex();
+    public void hover_over_rota_optimizasyon() {
+        String color_before = movita.rota_optimizasyon.getCssValue("color");
+        String color_b_hex = Color.fromString(color_before).asHex();
 
         ReusableMethods.hover(movita.rota_optimizasyon);
 
-        String color_after=movita.rota_optimizasyon.getCssValue("color");
-        String color_a_hex=Color.fromString(color_after).asHex();
+        String color_after = movita.rota_optimizasyon.getCssValue("color");
+        String color_a_hex = Color.fromString(color_after).asHex();
 
         Assert.assertFalse(Objects.equals(color_a_hex, color_b_hex));
 
 
     }
+
     @And("verifies rota_optimizasyon clickable")
-    public void clickable(){
+    public void clickable() {
         ExpectedConditions.elementToBeClickable(movita.rota_optimizasyon);
 
     }
+
     @Then("user verifies rota string")
-    public void verify_string(){
-        String expected_rota_text="ROTA OPTIMIZASYONU";
-String s=movita.rota_optimizasyon.getText();
-        Assert.assertEquals(expected_rota_text,s);
+    public void verify_string() {
+        String expected_rota_text = "ROTA OPTIMIZASYONU";
+        String s = movita.rota_optimizasyon.getText();
+        Assert.assertEquals(expected_rota_text, s);
 
     }
+
     @Then("user hovers over uygulamalar and verifies color change")
-    public void verify_color(){
-        String color_before= movita.uygulamalar.getCssValue("color");
-        String color_b_hex=Color.fromString(color_before).asHex();
+    public void verify_color() {
+        String color_before = movita.uygulamalar.getCssValue("color");
+        String color_b_hex = Color.fromString(color_before).asHex();
         ReusableMethods.hover(movita.uygulamalar);
-        String color_after=movita.uygulamalar.getCssValue("color");
-        String color_a_hex=Color.fromString(color_after).asHex();
+        String color_after = movita.uygulamalar.getCssValue("color");
+        String color_a_hex = Color.fromString(color_after).asHex();
         Assert.assertFalse(Objects.equals(color_a_hex, color_b_hex));
     }
+
     @And("verifies uygulamalar clickable")
-    public void clickable_uygulamalar(){
+    public void clickable_uygulamalar() {
         ExpectedConditions.elementToBeClickable(movita.uygulamalar);
 
 
     }
+
     @Then("verify uygulamalar string")
-    public void verify_uygulamalar_string(){
-        String expected="UYGULAMALAR";
-        String actual=movita.uygulamalar.getText();
-        Assert.assertEquals(expected,actual);
+    public void verify_uygulamalar_string() {
+        String expected = "UYGULAMALAR";
+        String actual = movita.uygulamalar.getText();
+        Assert.assertEquals(expected, actual);
 
     }
 
     @Then("user hovers over kilavuz and verifies color change")
     public void user_hovers_over_kilavuz_and_verifies_color_change() {
-        String color_before= movita.kilavuz.getCssValue("color");
-        String color_b_hex=Color.fromString(color_before).asHex();
+        String color_before = movita.kilavuz.getCssValue("color");
+        String color_b_hex = Color.fromString(color_before).asHex();
         ReusableMethods.hover(movita.kilavuz);
-        String color_after=movita.kilavuz.getCssValue("color");
-        String color_a_hex=Color.fromString(color_after).asHex();
+        String color_after = movita.kilavuz.getCssValue("color");
+        String color_a_hex = Color.fromString(color_after).asHex();
         Assert.assertFalse(Objects.equals(color_a_hex, color_b_hex));
 
     }
+
     @Then("user verifies kilavuz clickable")
     public void user_verifies_kilavuz_clickable() {
         ExpectedConditions.elementToBeClickable(movita.kilavuz);
     }
+
     @Then("verifies kilavuz string")
     public void verify_kilavuz_string() {
-        String expected="KILAVUZ";
-        String actual=movita.kilavuz.getText();
-        Assert.assertEquals(expected,actual);
+        String expected = "KILAVUZ";
+        String actual = movita.kilavuz.getText();
+        Assert.assertEquals(expected, actual);
 
     }
+
     @Then("user hovers over iletisim and verifies color change")
     public void user_hovers_over_iletisim_and_verifies_color_change() {
-        String color_before= movita.iletisim.getCssValue("color");
-        String color_b_hex=Color.fromString(color_before).asHex();
+        String color_before = movita.iletisim.getCssValue("color");
+        String color_b_hex = Color.fromString(color_before).asHex();
         ReusableMethods.hover(movita.iletisim);
-        String color_after=movita.iletisim.getCssValue("color");
-        String color_a_hex=Color.fromString(color_after).asHex();
+        String color_after = movita.iletisim.getCssValue("color");
+        String color_a_hex = Color.fromString(color_after).asHex();
         Assert.assertFalse(Objects.equals(color_a_hex, color_b_hex));
 
     }
+
     @Then("user verifies iletisim clickable")
     public void user_verifies_iletisim_clickable() {
         ExpectedConditions.elementToBeClickable(movita.iletisim);
 
     }
+
     @Then("verify iletisim string")
     public void verify_iletisim_string() {
-        String expected="İLETİŞİM";
-        String actual=movita.iletisim.getText();
-        Assert.assertEquals(expected,actual);
+        String expected = "İLETİŞİM";
+        String actual = movita.iletisim.getText();
+        Assert.assertEquals(expected, actual);
 
     }
+
     @Then("user hovers over giris and verifies color change")
     public void user_hovers_over_giris_and_verifies_color_change() {
-        String color_before= movita.giris.getCssValue("color");
-        String color_b_hex=Color.fromString(color_before).asHex();
+        String color_before = movita.giris.getCssValue("color");
+        String color_b_hex = Color.fromString(color_before).asHex();
         ReusableMethods.hover(movita.giris);
-        String color_after=movita.giris.getCssValue("color");
-        String color_a_hex=Color.fromString(color_after).asHex();
+        String color_after = movita.giris.getCssValue("color");
+        String color_a_hex = Color.fromString(color_after).asHex();
         Assert.assertFalse(Objects.equals(color_a_hex, color_b_hex));
 
     }
+
     @Then("user verifies giris clickable")
     public void user_verifies_giris_clickable() {
         ExpectedConditions.elementToBeClickable(movita.giris);
 
     }
+
     @Then("verify giris string")
     public void verify_giris_string() {
-        String expected="GİRİŞ YAP";
-        String actual=movita.giris.getText();
-        Assert.assertEquals(expected,actual);
-
+        String expected = "GİRİŞ YAP";
+        String actual = movita.giris.getText();
+        Assert.assertEquals(expected, actual);
 
     }
 
+
+    @Then("some_wait")
+    public void some_wait() {
+        ReusableMethods.waitFor(10);
+    }
+
+
+    @And("User hover over Dropdown on the right corner to switch languagetr")
+    public void user_clicks_forTurkish() {
+        ReusableMethods.hover(movita.logo_turk);
+
+
+    }
 
 }

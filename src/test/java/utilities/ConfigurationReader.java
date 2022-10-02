@@ -16,8 +16,6 @@ public class ConfigurationReader {
             file=new FileInputStream(path);
             properties=new Properties();
             properties.load(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
